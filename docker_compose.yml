@@ -1,0 +1,33 @@
+version: '3'
+services:
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile_django
+    ports:
+      - "80:80"
+    environment:
+      - SECRET_KEY=my_secret_key
+      - DEBUG=True
+      - ALLOWED_HOSTS=*
+      - CSRF_TRUSTED_ORIGINS=localhost:8000
+      - DB_HOST=
+      - DB_PORT=
+      - DB_DATABASE=
+      - DB_USERNAME=
+      - DB_PASSWORD=
+      - EXTERNAL_API_HOST=
+      - EXTERNAL_API_PORT=
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile_fastapi
+    ports:
+      - "8000:8000"
+    environment:
+      - AWS_ACCESS_KEY_ID=
+      - AWS_DEFAULT_REGION=
+      - AWS_SECRET_ACCESS_KEY=
+      - OPENAI_API_KEY=
+      - PINECONE_API_KEY=
+      - BUCKET_NAME=
